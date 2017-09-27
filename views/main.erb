@@ -1,0 +1,12 @@
+<div ui-view="headerView" ></div>
+
+<md-content  ng-if="state.current.name !== 'map' && state.current.name !== 'modules_list'" resize>
+    <div class="submenu" ui-view="submenuView"></div>
+</md-content>
+
+<div class="main-wrapper" resize>
+  <div ui-view="mainView" class="main-view"></div>
+</div>
+
+
+<div ui-view="errorView"></div>

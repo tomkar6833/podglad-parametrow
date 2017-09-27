@@ -1,0 +1,15 @@
+.module-info__list {
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: 70px;
+  left: 288px;
+  right: 0;
+  bottom: 0;
+  overflow: auto;
+  border-left: 1px solid #E53935; }
+
+.module-info__item {
+  border-bottom: 1px solid #E53935;
+  overflow: auto;
+  white-space: nowrap; }

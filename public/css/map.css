@@ -1,0 +1,65 @@
+.map-container {
+  height: 100%;
+  width: 100%; }
+
+.map {
+  width: 100%;
+  height: 100%; }
+
+.md-button.md-raised.button-list {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 10;
+  margin: 0; }
+
+.modules-list__list.md-virtual-repeat-container {
+  height: 300px;
+  margin-bottom: 80px;
+  margin-left: 15px; }
+
+.modules-list__header {
+  border-bottom: 1px solid #dcdcdc; }
+
+.modules-list__item {
+  height: 35px;
+  min-height: 35px; }
+
+.modules-list__counter {
+  text-align: center;
+  margin-bottom: 10px; }
+
+.modules-list__text {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden; }
+
+.bottom-sheet {
+  margin: 0;
+  padding: 0; }
+
+.login__img {
+  margin-top: 14px; }
+
+.markers-counter {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  padding: 10px 0;
+  height: 110px;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border: 1px solid #fff;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  border-radius: 5%;
+  background-clip: padding-box; }
+
+.markers-counter__value {
+  font-size: 60px; }

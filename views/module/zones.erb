@@ -1,0 +1,100 @@
+<md-content class="module-zones main" ng-cloak>
+    <md-tabs md-border-bottom class="module-zones__tabs">
+        <md-tab label="Strefy">
+             <md-list-item  flex layout="row" layout-align="space-around center" md-colors="{background: 'blue-500'}">
+                <p flex="15" class="module-zones__value cursor-pointer" ng-click="moduleApp.setOrder('zoneName')">Nazwa<span class="arrow" ng-show="moduleApp.typeField == 'zoneName'" ng-class="{false: 'arrow--reverse'}[moduleApp.reverse]">▼</span></p>
+                <p flex="10" class="module-zones__value cursor-pointer" ng-click="moduleApp.setOrder('zoneId')">Id<span class="arrow" ng-show="moduleApp.typeField == 'zoneId'" ng-class="{false: 'arrow--reverse'}[moduleApp.reverse]">▼</span></p>
+                <p flex="15" class="module-zones__value cursor-pointer" ng-click="moduleApp.setOrder('zoneMode')">Tryb<span class="arrow" ng-show="moduleApp.typeField == 'zoneMode'" ng-class="{false: 'arrow--reverse'}[moduleApp.reverse]">▼</span></p>
+                <p flex="15" class="module-zones__value cursor-pointer" ng-click="moduleApp.setOrder('zoneRelayState')">Strefa dogrzana<span class="arrow" ng-show="moduleApp.typeField == 'zoneRelayState'" ng-class="{false: 'arrow--reverse'}[moduleApp.reverse]">▼</span></p>
+                <p flex="10" class="module-zones__value cursor-pointer" ng-click="moduleApp.setOrder('zoneState')">Status strefy<span class="arrow" ng-show="moduleApp.typeField == 'zoneState'" ng-class="{false: 'arrow--reverse'}[moduleApp.reverse]">▼</span></p>
+                <p flex="10" class="module-zones__value cursor-pointer" ng-click="moduleApp.setOrder('actuators')">Siłowniki<span class="arrow" ng-show="moduleApp.typeField == 'actuators'" ng-class="{false: 'arrow--reverse'}[moduleApp.reverse]">▼</span></p>
+                <p flex="10" class="module-zones__value cursor-pointer" ng-click="moduleApp.setOrder('windowsSensor')">Czujniki okna<span class="arrow" ng-show="moduleApp.typeField == 'windowsSensor'" ng-class="{false: 'arrow--reverse'}[moduleApp.reverse]">▼</span></p>
+                <p flex="15" class="module-zones__value cursor-pointer" ng-click="moduleApp.setOrder('zoneLastUpdate')">Ostatnia aktualizacja<span class="arrow" ng-show="moduleApp.typeField == 'zoneLastUpdate'" ng-class="{false: 'arrow--reverse'}[moduleApp.reverse]">▼</span></p>
+            </md-list-item>
+            <md-virtual-repeat-container class="module-zones__list" >
+                <div  md-virtual-repeat="zone in moduleApp.moduleZones.elements | customOrderBy:moduleApp.typeField:moduleApp.reverse" flex layout="row" layout-align="space-around center" class="module-zones__list-item cursor-pointer" ng-click="showZone($event, zone)">
+                    <p flex="15" class="module-zones__value">{{zone.description.name !== 'default' ? zone.description.name : 'Strefa ' + (zone.zone.id + 1)}}</p>
+                    <p flex="10" class="module-zones__value">{{zone.description.id}}</p>
+                    <p flex="15" class="module-zones__value">{{zone.mode.mode | zoneMode}}</p>
+                    <p flex="15" class="module-zones__value">{{zone.zone.flags.relayState == 'off' ? 'Dogrzana' : 'Niedogrzana'}}</p>
+                    <p flex="10" class="module-zones__value">{{zone.zone.zoneState | zoneState}}</p>
+                    <p flex="10" class="module-zones__value">{{zone.actuators.length}}</p>
+                    <p flex="10" class="module-zones__value">{{zone.windowsSensors.length}}</p>
+                    <p flex="15" class="module-zones__value">{{zone.zone.time}}</p>
+                </div>
+            </md-virtual-repeat-container>
+            <h1 class="no-data-alert" ng-show="moduleApp.zoneAlert">Brak danych do wyświetlenia</h1>
+        </md-tab>
+
+        <md-tab label="Harmonogramy">
+            <md-list-item flex layout="row" layout-align="space-around center" md-colors="{background: 'blue-500'}">
+                <p flex="33" class="module-zones__value">Nazwa</p>
+                <p flex="33" class="module-zones__value">Id</p>
+                <p flex="33" class="module-zones__value">Ostatnia aktualizacja</p>
+            </md-list-item>
+            <md-virtual-repeat-container class="module-zones__list">
+                <div md-virtual-repeat="schedule in moduleApp.moduleZones.globalSchedules.elements" flex layout="row" layout-align="space-around center" class="module-zones__list-item cursor-pointer" ng-click="showSchedule($event, schedule)">
+                    <p flex="33" class="module-zones__value" ng-bind="schedule.name !== 'default' ? schedule.name : 'Harmonogram globalny ' + (schedule.index + 1)"></p>
+                    <p flex="33" class="module-zones__value" ng-bind="schedule.id"></p>
+                    <p flex="33" class="module-zones__value" ng-bind="moduleApp.moduleZones.globalSchedules.time"></p>
+                </div>
+            </md-virtual-repeat-container>
+            <h1 class="no-data-alert" ng-show="moduleApp.zoneAlert">Brak danych do wyświetlenia</h1>
+        </md-tab>
+
+        <md-tab label="Tryb listwy"  ng-if="moduleApp.moduleZones.controllerParameters.controllerMode.id">
+            <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+                <p flex="50">Nazwa trybu</p>
+                <p flex="50" ng-bind="moduleApp.moduleZones.controllerParameters.controllerMode.txtId == 0 ? moduleApp.getControllerModeName() : tools.subtitle(moduleApp.moduleZones.controllerParameters.controllerMode.txtId)"></p>
+            </md-list-item>
+            <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+                <p flex="50">Wartość (tryb)</p>
+                <p flex="50" ng-bind="moduleApp.moduleZones.controllerParameters.controllerMode.value"></p>
+            </md-list-item>
+            <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+                <p flex="50">Id</p>
+                <p flex="50" ng-bind="moduleApp.moduleZones.controllerParameters.controllerMode.id"></p>
+            </md-list-item>
+            <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+                <p flex="50">Id rodzica</p>
+                <p flex="50" ng-bind="moduleApp.moduleZones.controllerParameters.controllerMode.parentId"></p>
+            </md-list-item>
+            <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+                <p flex="50">Id elementu menu</p>
+                <p flex="50" ng-bind="moduleApp.moduleZones.controllerParameters.controllerMode.menuId"></p>
+            </md-list-item>
+            <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+                <p flex="50">Id ikony</p>
+                <p flex="50" ng-bind="moduleApp.moduleZones.controllerParameters.controllerMode.iconId"></p>
+            </md-list-item>
+        </md-tab>
+
+        <md-tab label="Parametry harmonogramów globalnych"  ng-if="moduleApp.moduleZones.controllerParameters.globalSchedulesNumber.id">
+            <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+                <p flex="50">Liczba harmonogramów</p>
+                <p flex="50" ng-bind="moduleApp.moduleZones.controllerParameters.globalSchedulesNumber.value"></p>
+            </md-list-item>
+            <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+                <p flex="50">Id</p>
+                <p flex="50" ng-bind="moduleApp.moduleZones.controllerParameters.globalSchedulesNumber.id"></p>
+            </md-list-item>
+            <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+                <p flex="50">Id rodzica</p>
+                <p flex="50" ng-bind="moduleApp.moduleZones.controllerParameters.globalSchedulesNumber.parentId"></p>
+            </md-list-item>
+            <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+                <p flex="50">Id elementu menu</p>
+                <p flex="50" ng-bind="moduleApp.moduleZones.controllerParameters.globalSchedulesNumber.menuId"></p>
+            </md-list-item>
+            <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+                <p flex="50">Id ikony</p>
+                <p flex="50" ng-bind="moduleApp.moduleZones.controllerParameters.globalSchedulesNumber.iconId"></p>
+            </md-list-item>
+            <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+                <p flex="50">Niesformatowane dane</p>
+                <p flex="50" ng-bind="moduleApp.moduleZones.controllerParameters.globalSchedulesNumber.scheduleRaw"></p>
+            </md-list-item>
+        </md-tab>
+    </md-tabs>
+
+</md-content>

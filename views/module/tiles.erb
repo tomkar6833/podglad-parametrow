@@ -1,0 +1,30 @@
+<md-container class="module-tiles" ng-cloak>
+
+    <div md-whiteframe="5" layout-margin layout="row" layout-align="center center">
+        <md-input-container flex="80">
+            <input name="searchText" ng-change="moduleApp.searchText(moduleApp.search.text, 'tile')" ng-model="moduleApp.search.text" placeholder="Wyszukaj">
+        </md-input-container>
+    </div>
+
+    <md-list-item flex layout="row" layout-align="space-around center" md-colors="{background: 'blue-500'}">
+        <p flex="20" class="module-tiles__value cursor-pointer" ng-click="moduleApp.setOrder('tileName')">Nazwa<span class="arrow" ng-show="moduleApp.typeField == 'tileName'" ng-class="{false: 'arrow--reverse'}[moduleApp.reverse]">▼</span></p>
+        <p flex="10" class="module-tiles__value cursor-pointer" ng-click="moduleApp.setOrder('id')">Id<span class="arrow" ng-show="moduleApp.typeField == 'id'" ng-class="{false: 'arrow--reverse'}[moduleApp.reverse]">▼</span></p>
+        <p flex="10" class="module-tiles__value cursor-pointer" ng-click="moduleApp.setOrder('orderId')">Kolejność<span class="arrow" ng-show="moduleApp.typeField == 'orderId'" ng-class="{false: 'arrow--reverse'}[moduleApp.reverse]">▼</span></p>
+        <p flex="20" class="module-tiles__value cursor-pointer" ng-click="moduleApp.setOrder('visibility')">Widoczność<span class="arrow" ng-show="moduleApp.typeField == 'visibility'" ng-class="{false: 'arrow--reverse'}[moduleApp.reverse]">▼</span></p>
+        <p flex="20" class="module-tiles__value cursor-pointer" ng-click="moduleApp.setOrder('type')">Typ<span class="arrow" ng-show="moduleApp.typeField == 'type'" ng-class="{false: 'arrow--reverse'}[moduleApp.reverse]">▼</span></p>
+        <p flex="20" class="module-tiles__value cursor-pointer" ng-click="moduleApp.setOrder('lastUpdate')">Ostatnia aktualizacja<span class="arrow" ng-show="moduleApp.typeField == 'lastUpdate'" ng-class="{false: 'arrow--reverse'}[moduleApp.reverse]">▼</span></p>
+    </md-list-item>
+
+    <md-virtual-repeat-container class="module-tiles__list bg-white" ng-if="moduleApp.moduleTiles.length > 0">
+        <div md-virtual-repeat="tile in moduleApp.moduleTiles | customOrderBy:moduleApp.typeField:moduleApp.reverse" class="module-tiles__item cursor-pointer" flex layout="row" layout-align="space-around center" ng-click="showTile($event, tile)">
+            <p flex="20" class="module-tiles__value">{{tile.params.txtId > 0 ? tools.subtitle(tile.params.txtId) : tile.params.description}}</p>
+            <p flex="10" class="module-tiles__value">{{tile.id}}</p>
+            <p flex="10" class="module-tiles__value">{{tile.orderId <= 0 || tile.orderId == 999 ? '--' : tile.orderId}}</p>
+            <p flex="20" class="module-tiles__value">{{tile.visibility ? 'Widoczy' : 'Ukryty'}}</p>
+            <p flex="20" class="module-tiles__value">{{tile.type | tileType}}</p>
+            <p flex="20" class="module-tiles__value">{{tile.lastUpdate}}</p>
+        </div>
+    </md-virtual-repeat-container>
+    <h1 class="no-data-alert" ng-show="moduleApp.tilesAlert">Brak danych do wyświetlenia</h1>
+
+</md-container>

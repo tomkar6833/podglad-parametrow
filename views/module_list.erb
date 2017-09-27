@@ -1,0 +1,27 @@
+<md-bottom-sheet class="bottom-sheet">
+    <div layout="row" layout-align="space-around center" md-colors="{background: 'blue-200'}">
+        <md-checkbox flex="20" ng-model="maps.onlyActive" ng-change="maps.changeOnlyActive()">Pokaż tylko aktywne</md-checkbox>
+
+        <md-input-container flex="50">
+            <input name="searchText" ng-change="maps.searchText(maps.search.text)" ng-model="maps.search.text" placeholder="Wyszukaj">
+        </md-input-container>
+
+        <p class="modules-list__counter" flex="20">Wybrane moduły: <strong ng-bind="maps.dynMarkers.length"></strong></p>
+    </div>
+
+    <md-list-item class="modules-list__header" layout="row" layout-align="space-around center">
+        <p flex="20" >Nazwa</p>
+        <p flex="10" >Typ</p>
+        <p flex="20" >Firma: wersja</p>
+        <p flex="50" >Adres</p>
+    </md-list-item>
+    <md-virtual-repeat-container class="modules-list__list" md-orient-vertical>
+        <div md-virtual-repeat="controller in maps.dynMarkers" layout="row" layout-align="space-around center" class="modules-list__item" ng-click="maps.centerOnMarker(controller)" ng-class="{true: 'cursor-pointer', false: 'cursor-default'}[controller.data.place != null]">
+            <p class="modules-list__text" flex="20">{{controller.data.name}}</p>
+            <p class="modules-list__text" flex="10">{{controller.data.type}}</p>
+            <p class="modules-list__text" flex="20">{{controller.data.company}}</p>
+            <p class="modules-list__text" flex="50">{{controller.data.place}}</p>
+        </div>
+    </md-virtual-repeat-container>
+
+</md-bottom-sheet>

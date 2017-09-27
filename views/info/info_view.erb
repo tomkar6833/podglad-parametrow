@@ -1,0 +1,16 @@
+<md-dialog aria-label="Szczegóły kontrolki" class="info">
+    <md-toolbar ng-bind="moduleData.selectControl[0].param" layout-align="center center"></md-toolbar>
+
+        <md-content>
+            <md-list>
+                <md-list-item class="info__item" flex layout="row"ng-repeat="parameter in moduleData.selectControl">
+                    <p class="info__item-name" flex="50" ng-bind="parameter.name"></p>
+                    <p class="info__item-value" flex="50" ng-bind="parameter.param"></p>
+                </md-list-item>
+            </md-list>
+        </md-content>
+
+        <md-dialog-actions layout="row">
+            <md-button class="md-raised md-warn" ng-click="cancel()">Zamknij</md-button>
+        </md-dialog-actions>
+</md-dialog>

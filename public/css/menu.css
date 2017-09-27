@@ -1,0 +1,31 @@
+.menu {
+  padding-right: 20px; }
+
+.menu__logo {
+  height: 70px;
+  width: 250px;
+  border-right: 2px solid #fff;
+  margin-left: 40px;
+  padding-right: 70px; }
+
+.menu__logo-img {
+  width: 50px;
+  height: 50px; }
+
+.menu__logo-name {
+  font-size: 30px; }
+
+.menu__account {
+  width: 230px; }
+
+.submenu__button {
+  list-style: none;
+  outline: none;
+  width: 200px; }
+
+.submenu__button.md-button.submenu__button--active.md-raised.md-primary {
+  background-color: #E53935;
+  transition: all 0.2s ease-in-out; }
+
+.submenu__button.md-button.submenu__button--active.md-raised.md-primary:hover {
+  background-color: #C62828; }

@@ -1,0 +1,36 @@
+<div class="list-module" ng-cloak>
+
+    <div class="md-whiteframe-8dp list-module__whiteframe" layout="row" layout-align="center center" flex>
+        <md-input-container class="list-module__input-container" flex="50">
+            <input name="searchText" ng-change="modules.searchText(modules.search.text)" ng-model="modules.search.text" placeholder="Wyszukaj">
+        </md-input-container>
+    </div>
+
+    <md-list-item md-colors="{background: 'blue-500'}">
+        <div flex layout="row" layout-align="space-between center" >
+            <p class="list-module__item-name cursor-pointer" flex="15" ng-click="moduleApp.setOrder('nazwa_modulu')">Nazwa modułu<span class="arrow" ng-show="moduleApp.typeField == 'nazwa_modulu'" ng-class="{false: 'arrow--reverse'}[moduleApp.reverse]">▼</span></p>
+            <p class="list-module__item-name cursor-pointer" flex="15" ng-click="moduleApp.setOrder('konto')" ng-if="login.accountType == 'admin'">Użytkownik<span class="arrow" ng-show="moduleApp.typeField == 'konto'" ng-class="{false: 'arrow--reverse'}[moduleApp.reverse]">▼</span></p>
+            <p class="list-module__item-name cursor-pointer" flex="10" ng-click="moduleApp.setOrder('id')">Id modułu<span class="arrow" ng-show="moduleApp.typeField == 'id'" ng-class="{false: 'arrow--reverse'}[moduleApp.reverse]">▼</span></p>
+            <p class="list-module__item-name cursor-pointer" flex="15" ng-click="moduleApp.setOrder('info_sterownika')">Typ sterownika<span class="arrow" ng-show="moduleApp.typeField == 'info_sterownika'" ng-class="{false: 'arrow--reverse'}[moduleApp.reverse]">▼</span></p>
+            <p class="list-module__item-name cursor-pointer" flex="10" ng-click="moduleApp.setOrder('status')">Moduł z serwerem<span class="arrow" ng-show="moduleApp.typeField == 'status'" ng-class="{false: 'arrow--reverse'}[moduleApp.reverse]">▼</span></p>
+            <p class="list-module__item-name cursor-pointer" flex="10" ng-click="moduleApp.setOrder('pol_ze_sterownikiem')">Sterownik z modułem<span class="arrow" ng-show="moduleApp.typeField == 'pol_ze_sterownikiem'" ng-class="{false: 'arrow--reverse'}[moduleApp.reverse]">▼</span></p>
+            <p class="list-module__item-name cursor-pointer" flex="20" ng-click="moduleApp.setOrder('email_powiadomien')">Email powiadomień<span class="arrow" ng-show="moduleApp.typeField == 'email_powiadomien'" ng-class="{false: 'arrow--reverse'}[moduleApp.reverse]">▼</span></p>
+        </div>
+    </md-list-item>
+
+    <md-virtual-repeat-container class="list-module__list" id="vertical-container">
+        <div md-virtual-repeat="module in modules.accountModules | customOrderBy:moduleApp.typeField:moduleApp.reverse" class="list-module__item cursor-pointer" flex layout="row" layout-align="space-around center" ng-click="moduleData.getSelectModule(module)">
+            <p class="list-module__item-name" flex="15">{{module.nazwa_modulu}}</p>
+            <p class="list-module__item-name" flex="15" ng-if="login.accountType == 'admin'">{{module.konto}}</p>
+            <p class="list-module__item-name" flex="10">{{module.id}}</p>
+            <p class="list-module__item-name" flex="15">{{module.info_sterownika | infoController}}</p>
+            <p class="list-module__item-name" flex="10" ng-class="{true: 'list-module__item-name--active', false: 'list-module__item-name--disactive'}[module.status == 'A']">{{module.status == 'A' ? 'Połączony' : 'Rozłączony'}}</p>
+            <p class="list-module__item-name" flex="10" ng-class="{true: 'list-module__item-name--active', false: 'list-module__item-name--disactive'}[module.pol_ze_sterownikiem == 'A']">{{module.pol_ze_sterownikiem == 'A' ? 'Połączony' : 'Rozłączony'}}</p>
+            <p class="list-module__item-name" flex="20">{{module.email_powiadomien}}</p>
+        </div>
+    </md-virtual-repeat-container>
+    <h1 class="no-data-alert" ng-show="modules.moduleAlert">Brak zarejestrowanych modułów</h1>
+</div>
+
+
+

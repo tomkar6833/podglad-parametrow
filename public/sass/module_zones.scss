@@ -1,0 +1,52 @@
+.module-zones{
+
+	margin:0;
+	position:absolute;
+	top:70px;
+	left:288px;
+	right:0;
+	bottom:0;
+	border-left:1px solid #E53935;
+
+	&__list-item{
+
+		height:40px;
+		outline:none;
+
+		&:hover{
+			background: rgba(0,0,0,.1);
+		}
+	}
+	&__value{
+
+		text-align: center;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+	&__item-name{
+		margin-right: 20px;
+		text-align:right;
+	}
+
+	&__item{
+		border-bottom: 1px solid #E53935;
+		min-height:40px;
+		overflow-x: auto;
+		white-space:nowrap;
+
+		&--subheader{
+			text-align: center;
+		}
+	}
+}
+md-tabs:not(.md-no-tab-content):not(.md-dynamic-height).module-zones__tabs{
+	min-height:100%;
+}
+md-virtual-repeat-container.module-zones__list{
+	position:absolute;
+	top:50px;
+	left:0;
+	right:0;
+	bottom:0;
+}

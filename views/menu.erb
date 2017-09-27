@@ -1,0 +1,17 @@
+<md-toolbar class="menu" layout="row" layout-align="space-between center">
+    <div layout="row" layout-align="space-around center">
+        <div class="menu__logo" layout="row" layout-align="space-between center">
+            <img class="menu__logo-img" src="img/logo.png" alt="">
+            <p class="menu__logo-name">Moduły</p>
+        </div>
+        <md-button class="md-raised md-primary" md-colors="{background: 'blue-700'}" ng-click="state.go('map')">Mapa</md-button>
+        <md-button class="md-raised md-primary" md-colors="{background: 'blue-700'}" ng-click="state.go('modules_list')" ng-hide="state.current.name === 'modules_list'">Lista modułów</md-button>
+    </div>
+
+    <div class="menu__account" layout="row" layout-align="space-between center">
+        <img src="img/user.png" alt="">
+        <p ng-bind="login.accountName"></p>
+        <md-button class="md-raised" ng-click="login.logout()">Wyloguj</md-button>
+    </div>
+</md-toolbar>
+

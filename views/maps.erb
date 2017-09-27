@@ -1,0 +1,62 @@
+<div ng-if="maps.showMap" class="main-container" resize>
+
+    <md-button class="button-list md-raised md-primary" ng-click="openBottomSheet()" aria-label="Pokaż listę modułów">Pokaż listę modułów</md-button>
+
+    <md-button class="md-fab md-fab-top-right md-primary" aria-label="Login" ng-click="toggleRight()">
+        <img class="login__img" src="img/login.png" alt="">
+    </md-button>
+
+    <div class="map-container">
+        <ng-map id="map" ng-style="{'height': (windowHeight - 20) + 'px'}" class="map" center="[47.208,18.041]" zoom="5"></ng-map>
+    </div>
+
+    <md-toolbar class="markers-counter">
+        <p class="markers-counter__value" ng-show="maps.dynMarkers.length > 0" ng-bind="maps.dynMarkers.length"></p>
+    </md-toolbar>
+
+    <md-sidenav class="md-sidenav-right" md-component-id="right">
+
+        <form ng-if="!login.authenticated" layout="column" layout-align="center center" autocomplete="off">
+            <md-toolbar  layout="row" layout-align="center">
+                <h2>Logowanie</h2>
+            </md-toolbar>
+
+            <md-radio-group ng-model="login.type"  layout="row" layout-align="center space-between" layout-padding flex>
+                <md-radio-button flex="50" value="user">Użytkownik</md-radio-button>
+                <md-radio-button flex="50" value="admin">Administrator</md-radio-button>
+            </md-radio-group>
+
+            <md-input-container style="width:85%">
+                <input type="input" ng-model="login.account" placeholder="Login" ng-keydown="$event.which === 13 && login.login()" md-autofocus>
+            </md-input-container>
+
+            <md-input-container style="width:85%">
+                <input type="password" ng-model="login.password" placeholder="Hasło" ng-keydown="$event.which === 13 && login.login()">
+            </md-input-container>
+
+            <p>Wybór bazy:</p>
+
+            <md-radio-group ng-model="login.database" layout="row" layout-padding style="width:85%">
+                <md-radio-button flex="50" value="official">Oficialna</md-radio-button>
+                <md-radio-button flex="50" value="dziadek">Dziadka</md-radio-button>
+            </md-radio-group>
+
+            <md-button class="md-primary md-raised" ng-click="login.login($event)" aria-label="Zaloguj">Zaloguj</md-button>
+
+        </form>
+
+        <div  layout="column" layout-align="center center" ng-if="login.authenticated">
+            <md-toolbar  layout="row" layout-align="center">
+                <h2>Zalogowany jako:</h2>
+            </md-toolbar>
+
+            <h2 layout-margin ng-bind="login.accountName"></h2>
+
+            <div layout="row" style="width:85%" layout-align="center space-between">
+                <md-button class="md-primary md-raised" flex="50" ng-click="login.go('modules_list')" aria-label="Kontynuuj">Kontynuuj</md-button>
+                <md-button class="md-raised" flex="50" ng-click="login.logout()" aria-label="Wyloguj">Wyloguj</md-button>
+            </div>
+        </div>
+    </md-sidenav>
+
+</div>

@@ -1,0 +1,36 @@
+.alarm {
+  margin: 0;
+  position: absolute;
+  top: 70px;
+  left: 288px;
+  right: 0;
+  bottom: 0;
+  border-left: 1px solid #E53935; }
+
+.alarm__item-list:hover {
+  background: rgba(0, 0, 0, 0.1); }
+
+.alarm__value {
+  text-align: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  height: 30px; }
+
+.alarm__item-name {
+  margin-right: 20px;
+  text-align: right; }
+
+.alarm__item {
+  border-bottom: 1px solid #E53935;
+  min-height: 40px; }
+
+.alarm__item--subheader {
+  text-align: center; }
+
+md-virtual-repeat-container.alarm__list {
+  position: absolute;
+  top: 140px;
+  left: 0;
+  right: 0;
+  bottom: 0; }

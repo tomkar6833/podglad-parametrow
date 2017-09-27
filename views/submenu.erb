@@ -1,0 +1,20 @@
+<ul class="submenu">
+    <li class="submenu__button" ng-click="state.go('module_info')">
+        <md-button class="md-primary md-raised submenu__button" ng-class="{true: 'submenu__button--active'} [state.current.name === 'module_info']" >Informacje</md-button>
+    </li>
+    <li class="submenu__button" ng-click="state.go('module_menu')">
+        <md-button class="md-primary md-raised submenu__button" ng-class="{true: 'submenu__button--active'} [state.current.name === 'module_menu']" >Menu i Kontrolki</md-button>
+    </li>
+    <li class="submenu__button" ng-click="state.go('module_tiles')">
+        <md-button class="md-primary md-raised submenu__button" ng-class="{true: 'submenu__button--active'} [state.current.name === 'module_tiles']" >Statusy</md-button>
+    </li>
+    <li class="submenu__button" ng-click="state.go('module_zones')">
+        <md-button class="md-primary md-raised submenu__button" ng-class="{true: 'submenu__button--active'} [state.current.name === 'module_zones']" >Strefy i harmonogramy</md-button>
+    </li>
+    <li class="submenu__button" ng-click="state.go('module_alarm')" >
+        <md-button class="md-primary md-raised submenu__button" ng-class="{true: 'submenu__button--active'} [state.current.name === 'module_alarm']" >Alarmy</md-button>
+    </li>
+    <li class="submenu__button" ng-click="state.go('module_alarm_history')">
+        <md-button class="md-primary md-raised submenu__button" ng-class="{true: 'submenu__button--active'} [state.current.name === 'module_alarm_history']" >Historia alarmów</md-button>
+    </li>
+</ul>

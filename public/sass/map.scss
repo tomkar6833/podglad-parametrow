@@ -1,0 +1,75 @@
+.map-container {
+	height: 100%;
+	width: 100%;
+}
+.map{
+	width:100%;
+	height:100%;
+}
+.md-button.md-raised.button-list{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+	z-index: 10;
+	margin: 0;
+}
+
+.modules-list{
+
+	&__list.md-virtual-repeat-container{
+		height:300px;
+		margin-bottom:80px;
+		margin-left:15px;
+	}
+	&__header{
+		 border-bottom:1px solid #dcdcdc;
+	}
+	&__item{
+		height:35px;
+		min-height:35px;
+	}
+	&__counter{
+		text-align: center;
+		margin-bottom:10px;
+	}
+	&__text{
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
+	}
+}
+
+.bottom-sheet{
+	margin:0;
+	padding:0;
+}
+
+.login{
+
+	&__img{
+		margin-top:14px;
+	}
+}
+
+.markers-counter{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width:200px;
+	padding:10px 0;
+	height:110px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border:1px solid #fff;
+	box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
+	border-radius: 5%;
+	background-clip: padding-box;
+
+	&__value{
+		font-size:60px;
+	}
+}
+

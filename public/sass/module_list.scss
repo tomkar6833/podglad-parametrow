@@ -1,0 +1,43 @@
+.list-module{
+
+	&__whiteframe{
+		margin:10px;
+	}
+	&__input-container{
+		margin:18px 0 0;
+	}
+
+	&__list.md-virtual-repeat-container{
+		position: absolute;
+		top:214px;
+		left:0;
+		right:0;
+		bottom:0;
+	}
+
+	&__item{
+		height:35px;
+		transition:all 0.2s ease-in-out;
+
+		&:hover{
+			background-color: rgba(0,0,0,.1);
+		}
+	}
+
+	&__item-name{
+
+		text-align: center;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
+
+		&--active{
+			border: 2px solid lawngreen;
+			border-radius:20px;
+		}
+		&--disactive{
+			border: 2px solid #E53935;
+			border-radius:20px;
+		}
+	}
+}

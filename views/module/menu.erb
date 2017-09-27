@@ -1,0 +1,46 @@
+<md-content class="module-menu">
+
+    <md-tabs md-border-bottom class="module-menu__tabs">
+        <md-tab label="Lista">
+            <div md-whiteframe="5"layout-margin layout="row" layout-align="center center">
+                <md-input-container flex="80">
+                    <input name="searchText" ng-change="moduleApp.searchText(moduleApp.search.text, 'menu')" ng-model="moduleApp.search.text" placeholder="Wyszukaj">
+                </md-input-container>
+            </div>
+
+            <md-list-item flex layout="row" layout-align="space-around center" md-colors="{background: 'blue-500'}">
+                <p flex="20" class="module-menu__value" ng-click="moduleApp.setOrder('txtId')">Nazwa<span class="arrow" ng-show="moduleApp.typeField == 'txtId'" ng-class="{false: 'arrow--reverse'}[moduleApp.reverse]">▼</span></p>
+                <p flex="10" class="module-menu__value" ng-click="moduleApp.setOrder('id')">Id<span class="arrow" ng-show="moduleApp.typeField == 'id'" ng-class="{false: 'arrow--reverse'}[moduleApp.reverse]">▼</span></p>
+                <p flex="10" class="module-menu__value" ng-click="moduleApp.setOrder('parentId')">Id rodzica<span class="arrow" ng-show="moduleApp.typeField == 'parentId'" ng-class="{false: 'arrow--reverse'}[moduleApp.reverse]">▼</span></p>
+                <p flex="10" class="module-menu__value" ng-click="moduleApp.setOrder('orderId')">Indeks<span class="arrow" ng-show="moduleApp.typeField == 'orderId'" ng-class="{false: 'arrow--reverse'}[moduleApp.reverse]">▼</span></p>
+                <p flex="15" class="module-menu__value" ng-click="moduleApp.setOrder('menuType')">Typ menu<span class="arrow" ng-show="moduleApp.typeField == 'menuType'" ng-class="{false: 'arrow--reverse'}[moduleApp.reverse]">▼</span></p>
+                <p flex="15" class="module-menu__value" ng-click="moduleApp.setOrder('type')">Typ kontrolki<span class="arrow" ng-show="moduleApp.typeField == 'type'" ng-class="{false: 'arrow--reverse'}[moduleApp.reverse]">▼</span></p>
+                <p flex="20" class="module-menu__value" ng-click="moduleApp.setOrder('lastUpdate')">Ostatnia aktualizacja<span class="arrow" ng-show="moduleApp.typeField == 'lastUpdate'" ng-class="{false: 'arrow--reverse'}[moduleApp.reverse]">▼</span></p>
+            </md-list-item>
+            <md-virtual-repeat-container class="module-menu__list bg-white" id="vertical-container">
+                <div md-virtual-repeat="control in moduleApp.moduleMenu | customOrderBy:moduleApp.typeField:moduleApp.reverse" class="module-menu__list-item cursor-pointer" flex layout="row" layout-align="space-around center" ng-click="showControl($event, control)">
+                    <p flex="20" class="module-menu__value">{{tools.subtitle(control.txtId) + ' ' + tools.getDay(control)}}</p>
+                    <p flex="10" class="module-menu__value">{{control.id}}</p>
+                    <p flex="10" class="module-menu__value">{{control.parentId}}</p>
+                    <p flex="10" class="module-menu__value">{{control.orderId}}</p>
+                    <p flex="15" class="module-menu__value">{{control.menuType | menuType}}</p>
+                    <p flex="15" class="module-menu__value">{{control.type | controlType}}</p>
+                    <p flex="20" class="module-menu__value">{{control.lastUpdate}}</p>
+                </div>
+            </md-virtual-repeat-container>
+            <h1 class="no-data-alert" ng-show="moduleApp.menuAlert">Brak danych do wyświetlenia</h1>
+        </md-tab>
+
+        <md-tab label="Drzewo">
+
+            <md-virtual-repeat-container class="module-menu__tree" id="vertical-container-2">
+                <div md-virtual-repeat="control in moduleApp.menuTree" class="module-menu__tree-item cursor-pointer" ng-click="showControl($event, control)" ng-class="{true: 'module-menu__tree-item--parent'} [control.margin == 30]">
+                    <p ng-style="{'margin-left': control.margin + 'px', 'font-weight': (control.type == 0 || control.type == 35) ? 'bold' : 'normal'}" ng-bind="tools.subtitle(control.txtId) + ' ' + tools.getDay(control) + ' | ' + control.id  + ' | ' + (control.access ? 'Widoczne' : 'Ukryte')"></p>
+                </div>
+                <h1 class="module-zones__alert" ng-show="moduleApp.menuAlert">Brak danych do wyświetlenia</h1>
+            </md-virtual-repeat-container>
+
+        </md-tab>
+    </md-tabs>
+</md-content>
+

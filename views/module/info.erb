@@ -1,0 +1,89 @@
+
+<div class="module-info__list">
+    <md-list ng-if="moduleApp.module.id != undefined">
+        <md-list-item class="module-info__item" flex layout="row">
+            <p flex="40">Nazwa modułu</p>
+            <p flex="55" ng-bind="moduleApp.module.nazwa_modulu"></p>
+        </md-list-item>
+        <md-list-item class="module-info__item" flex layout="row">
+            <p flex="40">Typ sterownika</p>
+            <p flex="55" ng-bind="tools.getType(moduleApp.module.opis)"></p>
+        </md-list-item>
+        <md-list-item class="module-info__item" flex layout="row">
+            <p flex="40">Nazwa i wersja</p>
+            <p flex="55" ng-bind="moduleApp.module.info_sterownika == null || moduleApp.module.info_sterownika.length == 0 ? '- -' : moduleApp.module.info_sterownika"></p>
+        </md-list-item>
+        <md-list-item class="module-info__item" flex layout="row">
+            <p flex="40" >Firma</p>
+            <p flex="55"  ng-bind="tools.company(moduleApp.module.firma_sterownika)"></p>
+        </md-list-item>
+        <md-list-item class="module-info__item" flex layout="row">
+            <p flex="40">Id modułu</p>
+            <p flex="55" ng-bind="moduleApp.module.id"></p>
+        </md-list-item>
+        <md-list-item class="module-info__item" flex layout="row">
+            <p flex="40">Id konta</p>
+            <p flex="55" ng-bind="moduleApp.module.id_konta"></p>
+        </md-list-item>
+        <md-list-item class="module-info__item" flex layout="row">
+            <p flex="40">Moduł z serwerem</p>
+            <p flex="55" ng-bind="moduleApp.module.status == 'A' ? 'Połączony' : 'Rozłączony'"></p>
+        </md-list-item>
+        <md-list-item class="module-info__item" flex layout="row">
+            <p flex="40">Sterownik z modułem</p>
+            <p flex="55" ng-bind="moduleApp.module.pol_ze_sterownikiem == 'A' ? 'Połączony' : 'Rozłączony'"></p>
+        </md-list-item>
+        <md-list-item class="module-info__item" flex layout="row">
+            <p flex="40"> Email powiadomień</p>
+            <p flex="55"  ng-bind="moduleApp.module.email_powiadomien == null || moduleApp.module.email_powiadomien.length == 0 ? '- -' : moduleApp.module.email_powiadomien"></p>
+        </md-list-item>
+        <md-list-item class="module-info__item" flex layout="row">
+            <p flex="40">Telefon</p>
+            <p flex="55" ng-bind="moduleApp.module.telefon == null || moduleApp.module.telefon.length == 0 ? '- -' : moduleApp.module.telefon"></p>
+        </md-list-item>
+        <md-list-item class="module-info__item" flex layout="row">
+            <p flex="40">Dodatkowe informacje</p>
+            <p flex="55" ng-bind="moduleApp.module.info == null || moduleApp.module.info.length == 0 ? '- -' : moduleApp.module.info"></p>
+        </md-list-item>
+        <md-list-item class="module-info__item" flex layout="row" class="module-info__item--help" ng-if="moduleApp.module.kafelki !== null && moduleApp.module.kafelki.length != 0 "  title="Id | Widoczność">
+            <p flex="40">Kolejność kafelków</p>
+            <p flex="55" ng-bind="moduleApp.module.kafelki"></p>
+        </md-list-item>
+        <md-list-item class="module-info__item" flex layout="row" class="module-info__item--help" ng-if="moduleApp.module.kontenery !== null && moduleApp.module.kontenery.length != 0 " title="Id | Widoczność | Rozwinięty">
+            <p flex="40">Kolejność kontenerów</p>
+            <p flex="55" ng-bind="moduleApp.module.kontenery"></p>
+        </md-list-item>
+        <md-list-item class="module-info__item" flex layout="row">
+            <p flex="40">Kraj</p>
+            <p flex="55" ng-bind="moduleApp.module.kraj == null || moduleApp.module.kraj.length == 0 ? '- -' : moduleApp.module.kraj"></p>
+        </md-list-item>
+        <md-list-item class="module-info__item" flex layout="row">
+            <p flex="40">Kod pocztowy</p>
+            <p flex="55" ng-bind="moduleApp.module.kod_pocztowy == null || moduleApp.module.kod_pocztowy.length == 0 ? '- -' : moduleApp.module.kod_pocztowy"></p>
+        </md-list-item>
+        <md-list-item class="module-info__item" flex layout="row">
+            <p flex="40">Lokalizacja</p>
+            <p flex="55" ng-bind="moduleApp.module.geo.name == null || moduleApp.module.geo.name.length == 0 ? '- -' : moduleApp.module.geo.name"></p>
+        </md-list-item>
+        <md-list-item class="module-info__item" flex layout="row">
+            <p flex="40">Data rejestracji</p>
+            <p flex="55" ng-bind="moduleApp.module.kiedy"></p>
+        </md-list-item>
+        <md-list-item class="module-info__item" flex layout="row" ng-if="moduleApp.module.maxDates.maxMenu != null">
+            <p flex="40">Ostatnie dane dla Menu</p>
+            <p flex="55" ng-bind="moduleApp.module.maxDates.maxMenu"></p>
+        </md-list-item>
+        <md-list-item class="module-info__item" flex layout="row" ng-if="moduleApp.module.maxDates.maxTile != null">
+            <p flex="40">Ostatnie dane dla Statusów</p>
+            <p flex="55" ng-bind="moduleApp.module.maxDates.maxTile"></p>
+        </md-list-item>
+        <md-list-item class="module-info__item" flex layout="row" ng-if="moduleApp.module.maxDates.maxZone != null">
+            <p flex="40">Ostatnie dane dla Stref</p>
+            <p flex="55" ng-bind="moduleApp.module.maxDates.maxZone"></p>
+        </md-list-item>
+        <md-list-item class="module-info__item" flex layout="row" ng-if="moduleApp.module.maxDates.maxMenu == null && moduleApp.module.maxDates.maxTile == null && moduleApp.module.maxDates.maxZone == null">
+            <p flex="40">Ostatnie dane</p>
+            <p flex="55" >Brak przesłanych danych</p>
+        </md-list-item>
+    </md-list>
+</div>

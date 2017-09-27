@@ -1,0 +1,46 @@
+body, html {
+	height: 100%;
+	width: 100%;
+	padding:0;
+	margin:0;
+	overflow: hidden;
+	font-family: 'Titillium Web', sans-serif;
+	background-size: cover;
+}
+.arrow{
+	display: inline-block;
+	margin-left:5px;
+	&--reverse{
+		transform:rotate(180deg);
+	}
+}
+.cursor-pointer{
+	cursor:pointer;
+}
+.no-data-alert{
+	margin-top:10%;
+	text-align: center;
+}
+p{
+	margin:0;
+}
+
+.info{
+	width:80%;
+	max-width:1000px;
+
+	&__item{
+		min-height:45px;
+		height:45px;
+		border-bottom:1px solid #E53935;
+		overflow-x:auto;
+		overflow-y:hidden;
+	}
+	&__item-name{
+		text-align: right;
+		margin:0 10px;
+	}
+	&__item-value{
+		margin:0 15px;
+	}
+}

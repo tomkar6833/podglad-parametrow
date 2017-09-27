@@ -1,0 +1,75 @@
+<md-dialog aria-label="Szczegóły kontrolki" class="info">
+
+   <md-toolbar layout-align="center center">Szczegóły harmonogramu</md-toolbar>
+    <md-list >
+        <md-list-item  class="module-zones__item">
+            <p flex="50" class="module-zones__item-name">Nazwa</p>
+            <p flex="50" class="module-zones__item-value" ng-bind="moduleData.selectedSchedule.name != 'default' ? moduleData.selectedSchedule.name : 'Harmonogram globalny ' + (moduleData.selectedSchedule.index + 1)"></p>
+        </md-list-item>
+        <md-list-item  class="module-zones__item">
+            <p flex="50" class="module-zones__item-name">Indeks</p>
+            <p flex="50" class="module-zones__item-value" ng-bind="moduleData.selectedSchedule.index"></p>
+        </md-list-item>
+        <md-list-item  class="module-zones__item">
+            <p flex="50" class="module-zones__item-name">Id</p>
+            <p flex="50" class="module-zones__item-value" ng-bind="moduleData.selectedSchedule.id"></p>
+        </md-list-item>
+        <md-list-item  class="module-zones__item">
+            <p flex="50" class="module-zones__item-name">Id rodzica</p>
+            <p flex="50" class="module-zones__item-value" ng-bind="moduleData.selectedSchedule.parentId"></p>
+        </md-list-item>
+        <md-list-item  class="module-zones__item">
+            <p flex="50" class="module-zones__item-name">Ostatnia aktualizacja</p>
+            <p flex="50" class="module-zones__item-value" ng-bind="moduleApp.moduleZones.globalSchedules.time"></p>
+        </md-list-item>
+        <md-list-item  class="module-zones__item">
+            <p flex="50" class="module-zones__item-name">Program 1: dni w, które obowiązuje</p>
+            <p flex="50" class="module-zones__item-value">
+                <span ng-show="moduleData.selectedSchedule.p0Days[0] == '1'">Pon, </span>
+                <span ng-show="moduleData.selectedSchedule.p0Days[1] == '1'">Wt, </span>
+                <span ng-show="moduleData.selectedSchedule.p0Days[2] == '1'">Śr, </span>
+                <span ng-show="moduleData.selectedSchedule.p0Days[3] == '1'">Czw, </span>
+                <span ng-show="moduleData.selectedSchedule.p0Days[4] == '1'">Pt, </span>
+                <span ng-show="moduleData.selectedSchedule.p0Days[5] == '1'">Sb, </span>
+                <span ng-show="moduleData.selectedSchedule.p0Days[6] == '1'">Nd</span>
+            </p>
+        </md-list-item>
+        <md-list-item  class="module-zones__item">
+            <p flex="50" class="module-zones__item-name">Program 1: temperatura tła</p>
+            <p flex="50" class="module-zones__item-value" ng-bind="moduleData.selectedSchedule.p0SetbackTemp/10 + '°C'"></p>
+        </md-list-item>
+        <md-list-item  class="module-zones__item" ng-repeat="(key, interval) in moduleData.selectedSchedule.p0Intervals">
+            <p flex="50" class="module-zones__item-name">Program 1: przedział {{key + 1}}</p>
+            <p flex="50" class="module-zones__item-value" ng-bind="'Początek: ' + (interval.start | minHour) + ' | koniec: ' + (interval.stop | minHour) + ' | temperatura: ' + interval.temp/10 + '°C'"></p>
+        </md-list-item>
+        <md-list-item  class="module-zones__item">
+            <p flex="50" class="module-zones__item-name">Program 2: dni w, które obowiązuje</p>
+            <p flex="50" class="module-zones__item-value">
+                <span ng-show="moduleData.selectedSchedule.p1Days[0] == '1'">Pon, </span>
+                <span ng-show="moduleData.selectedSchedule.p1Days[1] == '1'">Wt, </span>
+                <span ng-show="moduleData.selectedSchedule.p1Days[2] == '1'">Śr, </span>
+                <span ng-show="moduleData.selectedSchedule.p1Days[3] == '1'">Czw, </span>
+                <span ng-show="moduleData.selectedSchedule.p1Days[4] == '1'">Pt, </span>
+                <span ng-show="moduleData.selectedSchedule.p1Days[5] == '1'">Sb, </span>
+                <span ng-show="moduleData.selectedSchedule.p1Days[6] == '1'">Nd</span>
+            </p>
+        </md-list-item>
+        <md-list-item  class="module-zones__item">
+            <p flex="50" class="module-zones__item-name">Program 2: temperatura tła</p>
+            <p flex="50" class="module-zones__item-value" ng-bind="moduleData.selectedSchedule.p1SetbackTemp/10 + '°C'"></p>
+        </md-list-item>
+        <md-list-item  class="module-zones__item" ng-repeat="(key, interval) in moduleData.selectedSchedule.p1Intervals">
+            <p flex="50" class="module-zones__item-name">Program 2: przedział {{key + 1}}</p>
+            <p flex="50" class="module-zones__item-value" ng-bind="'Początek: ' + (interval.start | minHour) + ' | koniec: ' + (interval.stop | minHour) + ' | temperatura: ' + interval.temp/10 + '°C'"></p>
+        </md-list-item>
+        <md-list-item  class="module-zones__item">
+            <p flex="50" class="module-zones__item-name">Niesformatowane dane</p>
+            <p flex="50" class="module-zones__item-value" ng-bind="moduleData.selectedSchedule.scheduleRaw"></p>
+        </md-list-item>
+    </md-list>
+
+    <md-dialog-actions layout="row">
+        <md-button class="md-raised md-warn" ng-click="cancel()">Zamknij</md-button>
+    </md-dialog-actions>
+
+</md-dialog>

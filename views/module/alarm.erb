@@ -1,0 +1,28 @@
+<md-container class="alarm" ng-cloak>
+
+    <div class="md-whiteframe-8dp" layout-margin layout="row" layout-align="center center">
+        <md-input-container flex="80">
+            <input name="searchText" ng-change="moduleApp.searchText(moduleApp.search.text, 'alarm')" ng-model="moduleApp.search.text" placeholder="Wyszukaj">
+        </md-input-container>
+    </div>
+
+    <md-list-item flex layout="row" layout-align="space-around center" md-colors="{background: 'blue-500'}">
+        <p flex="20" class="alarm__value cursor-pointer" ng-click="moduleApp.setOrder('txtId')">Nazwa<span class="arrow" ng-show="moduleApp.typeField == 'txtId'" ng-class="{false: 'arrow--reverse'}[moduleApp.reverse]">▼</span></p>
+        <p flex="10" class="alarm__value cursor-pointer" ng-click="moduleApp.setOrder('id')">Id<span class="arrow" ng-show="moduleApp.typeField == 'id'" ng-class="{false: 'arrow--reverse'}[moduleApp.reverse]">▼</span></p>
+        <p flex="20" class="alarm__value cursor-pointer" ng-click="moduleApp.setOrder('visibility')">Widoczność<span class="arrow" ng-show="moduleApp.typeField == 'visibility'" ng-class="{false: 'arrow--reverse'}[moduleApp.reverse]">▼</span></p>
+        <p flex="20" class="alarm__value cursor-pointer" ng-click="moduleApp.setOrder('type')">Typ<span class="arrow" ng-show="moduleApp.typeField == 'type'" ng-class="{false: 'arrow--reverse'}[moduleApp.reverse]">▼</span></p>
+        <p flex="30" class="alarm__value cursor-pointer" ng-click="moduleApp.setOrder('lastUpdate')">Ostatnia aktualizacja<span class="arrow" ng-show="moduleApp.typeField == 'lastUpdate'" ng-class="{false: 'arrow--reverse'}[moduleApp.reverse]">▼</span></p>
+    </md-list-item>
+
+    <md-virtual-repeat-container class="alarm__list">
+        <div md-virtual-repeat="alarm in moduleApp.moduleAlarm | customOrderBy:moduleApp.typeField:moduleApp.reverse" class="alarm__item-list cursor-pointer" flex layout="row" layout-align="space-around center" ng-click="showAlarm($event, alarm)">
+            <p flex="20" class="alarm__value">{{tools.subtitle(alarm.txtId)}}</p>
+            <p flex="10" class="alarm__value">{{alarm.id}}</p>
+            <p flex="20" class="alarm__value">{{alarm.visibility ? 'Widoczy' : 'Ukryty'}}</p>
+            <p flex="20" class="alarm__value">{{alarm.alarmType}}</p>
+            <p flex="30" class="alarm__value">{{alarm.lastUpdate}}</p>
+        </div>
+    </md-virtual-repeat-container>
+    <h1 class="no-data-alert" ng-show="moduleApp.alarmAlert">Brak danych do wyświetlenia</h1>
+</md-container>
+

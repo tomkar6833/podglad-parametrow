@@ -1,0 +1,381 @@
+<md-dialog aria-label="Szczegóły strefy" class="info">
+    <md-content class="module-zones__list">
+        <md-toolbar layout-align="center center">Szczegóły strefy</md-toolbar>
+
+        <md-subheader md-colors="{background: 'red-500'}" class="module-zones__item module-zones__item--subheader">Strefa</md-subheader>
+
+        <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+            <p flex="50" class="module-zones__item-name">Nazwa</p>
+            <p flex="50" class="module-zones__item-value" ng-bind="moduleData.selectedZone.description.name != 'default' ? moduleData.selectedZone.description.name : 'Strefa ' + (zone.zone.index + 1)"></p>
+        </md-list-item>
+        <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+            <p flex="50" class="module-zones__item-name">Id</p>
+            <p flex="50" class="module-zones__item-value" ng-bind="moduleData.selectedZone.description.id"></p>
+        </md-list-item>
+        <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+            <p flex="50" class="module-zones__item-name">Id rodzica</p>
+            <p flex="50" class="module-zones__item-value" ng-bind="moduleData.selectedZone.description.parentId"></p>
+        </md-list-item>
+        <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+            <p flex="50" class="module-zones__item-name">Indeks</p>
+            <p flex="50" class="module-zones__item-value" ng-bind="moduleData.selectedZone.zone.index"></p>
+        </md-list-item>
+        <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+            <p flex="50" class="module-zones__item-name">Ostatnia aktualizacja</p>
+            <p flex="50" class="module-zones__item-value" ng-bind="moduleData.selectedZone.zone.time"></p>
+        </md-list-item>
+        <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+            <p flex="50" class="module-zones__item-name">Styl ikony</p>
+            <p flex="50" class="module-zones__item-value" ng-bind="moduleData.selectedZone.description.styleIcon | iconZoneType"></p>
+        </md-list-item>
+        <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+            <p flex="50" class="module-zones__item-name">Status strefy</p>
+            <p flex="50" class="module-zones__item-value" ng-bind="moduleData.selectedZone.zone.zoneState | zoneState"></p>
+        </md-list-item>
+        <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+            <p flex="50" class="module-zones__item-name">Strefa dogrzana</p>
+            <p flex="50" class="module-zones__item-value" ng-bind="moduleData.selectedZone.zone.flags.relayState == 'off' ? 'Dogrzana' : 'Niedogrzana'"></p>
+        </md-list-item>
+        <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+            <p flex="50" class="module-zones__item-name">Otwarte okno w strefie</p>
+            <p flex="50" class="module-zones__item-value" ng-bind="moduleData.selectedZone.zone.flags.minOneWindowOpen ? 'Tak' : 'Nie'"></p>
+        </md-list-item>
+        <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+            <p flex="50" class="module-zones__item-name">Widoczna</p>
+            <p flex="50" class="module-zones__item-value" ng-bind="moduleData.selectedZone.zone.visibility ? 'Widoczna' : 'Ukryta'"></p>
+        </md-list-item>
+        <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+            <p flex="50" class="module-zones__item-name">W trakcie zmiany</p>
+            <p flex="50" class="module-zones__item-value" ng-bind="moduleData.selectedZone.zone.duringChange ? 'Tak' : 'Nie'"></p>
+        </md-list-item>
+        <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+            <p flex="50" class="module-zones__item-name">Temperatura zadana</p>
+            <p flex="50" class="module-zones__item-value" ng-bind="moduleData.selectedZone.zone.setTemperature/10 + '°C'"></p>
+        </md-list-item>
+        <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+            <p flex="50" class="module-zones__item-name">Temperatura aktualna</p>
+            <p flex="50" class="module-zones__item-value" ng-bind="moduleData.selectedZone.zone.currentTemperature/10 + '°C'"></p>
+        </md-list-item>
+        <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+            <p flex="50" class="module-zones__item-name">Procent otwarcia siłownika</p>
+            <p flex="50" class="module-zones__item-value" ng-bind="moduleData.selectedZone.zone.actuatorsOpen !== null ? moduleData.selectedZone.zone.actuatorsOpen + '%' : '--'"></p>
+        </md-list-item>
+        <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+            <p flex="50" class="module-zones__item-name">Poziom sygnału siłownika</p>
+            <p flex="50" class="module-zones__item-value" ng-bind="moduleData.selectedZone.zone.signalStrength !== null ? moduleData.selectedZone.zone.signalStrength + '%' : '--'"></p>
+        </md-list-item>
+        <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+            <p flex="50" class="module-zones__item-name">Poziom baterii siłownika</p>
+            <p flex="50" class="module-zones__item-value" ng-bind="moduleData.selectedZone.zone.batteryLevel !== null ? moduleData.selectedZone.zone.batteryLevel + '%' : '--'"></p>
+        </md-list-item>
+        <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+            <p flex="50" class="module-zones__item-name">Niesformatowane dane Strefy</p>
+            <p flex="50" class="module-zones__item-value" ng-bind="moduleData.selectedZone.zone.zoneRaw"></p>
+        </md-list-item>
+        <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+            <p flex="50" class="module-zones__item-name">Niesformatowany opis Strefy</p>
+            <p flex="50" class="module-zones__item-value" ng-bind="moduleData.selectedZone.description.descriptionRaw"></p>
+        </md-list-item>
+        <md-divider ></md-divider>
+        <md-subheader md-colors="{background: 'red-500'}"  class="module-zones__item module-zones__item--subheader">Nakładka</md-subheader>
+
+        <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+            <p flex="50" class="module-zones__item-name">Tryb</p>
+            <p flex="50" class="module-zones__item-value" ng-bind="moduleData.selectedZone.mode.mode | zoneMode"></p>
+        </md-list-item>
+        <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+            <p flex="50" class="module-zones__item-name">Id nakładki</p>
+            <p flex="50" class="module-zones__item-value" ng-bind="moduleData.selectedZone.mode.id"></p>
+        </md-list-item>
+        <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+            <p flex="50" class="module-zones__item-name">Id rodzica</p>
+            <p flex="50" class="module-zones__item-value" ng-bind="moduleData.selectedZone.mode.parentId"></p>
+        </md-list-item>
+        <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+            <p flex="50" class="module-zones__item-name">Indeks harmonogramu</p>
+            <p flex="50" class="module-zones__item-value" ng-bind="moduleData.selectedZone.mode.scheduleIndex"></p>
+        </md-list-item>
+        <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+            <p flex="50" class="module-zones__item-name">Temperatura zadana nakładki</p>
+            <p flex="50" class="module-zones__item-value" ng-bind="moduleData.selectedZone.mode.setTemperature/10 + '°C'"></p>
+        </md-list-item>
+        <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+            <p flex="50" class="module-zones__item-name">Czas (dla stałej z ograniczeniem czasu)</p>
+            <p flex="50" class="module-zones__item-value" ng-bind="moduleData.selectedZone.mode.constTempTime + ' min'"></p>
+        </md-list-item>
+        <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+            <p flex="50" class="module-zones__item-name">Niesformatowana nakładka</p>
+            <p flex="50" class="module-zones__item-value" ng-bind="moduleData.selectedZone.mode.modeRaw"></p>
+        </md-list-item>
+
+        <md-divider></md-divider>
+
+        <md-subheader md-colors="{background: 'red-500'}"  class="module-zones__item module-zones__item--subheader">Harmonogram lokalny</md-subheader>
+
+        <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+            <p flex="50" class="module-zones__item-name">Id</p>
+            <p flex="50" class="module-zones__item-value" ng-bind="moduleData.selectedZone.schedule.id"></p>
+        </md-list-item>
+        <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+            <p flex="50" class="module-zones__item-name">Id rodzica</p>
+            <p flex="50" class="module-zones__item-value" ng-bind="moduleData.selectedZone.schedule.parentId"></p>
+        </md-list-item>
+        <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+            <p flex="50" class="module-zones__item-name">Program 1: dni w, które obowiązuje</p>
+            <p flex="50" class="module-zones__item-value">
+                <span ng-show="moduleData.selectedZone.schedule.p0Days[0] == '1'">Pon, </span>
+                <span ng-show="moduleData.selectedZone.schedule.p0Days[1] == '1'">Wt, </span>
+                <span ng-show="moduleData.selectedZone.schedule.p0Days[2] == '1'">Śr, </span>
+                <span ng-show="moduleData.selectedZone.schedule.p0Days[3] == '1'">Czw, </span>
+                <span ng-show="moduleData.selectedZone.schedule.p0Days[4] == '1'">Pt, </span>
+                <span ng-show="moduleData.selectedZone.schedule.p0Days[5] == '1'">Sb, </span>
+                <span ng-show="moduleData.selectedZone.schedule.p0Days[6] == '1'">Nd</span>
+            </p>
+        </md-list-item>
+        <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+            <p flex="50" class="module-zones__item-name">Program 1: temperatura tła</p>
+            <p flex="50" class="module-zones__item-value" ng-bind="moduleData.selectedZone.schedule.p0SetbackTemp/10 + '°C'"></p>
+        </md-list-item>
+        <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item" ng-repeat="(key, interval) in moduleData.selectedZone.schedule.p0Intervals">
+            <p flex="50" class="module-zones__item-name">Program 1: przedział {{key + 1}}</p>
+            <p flex="50" class="module-zones__item-value" ng-bind="'Początek: ' + (interval.start | minHour) + ' | koniec: ' + (interval.stop | minHour) + ' | temperatura: ' + interval.temp/10 + '°C'"></p>
+        </md-list-item>
+        <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+            <p flex="50" class="module-zones__item-name">Program 2: dni w, które obowiązuje</p>
+            <p flex="50" class="module-zones__item-value">
+                <span ng-show="moduleData.selectedZone.schedule.p1Days[0] == '1'">Pon, </span>
+                <span ng-show="moduleData.selectedZone.schedule.p1Days[1] == '1'">Wt, </span>
+                <span ng-show="moduleData.selectedZone.schedule.p1Days[2] == '1'">Śr, </span>
+                <span ng-show="moduleData.selectedZone.schedule.p1Days[3] == '1'">Czw, </span>
+                <span ng-show="moduleData.selectedZone.schedule.p1Days[4] == '1'">Pt, </span>
+                <span ng-show="moduleData.selectedZone.schedule.p1Days[5] == '1'">Sb, </span>
+                <span ng-show="moduleData.selectedZone.schedule.p1Days[6] == '1'">Nd</span>
+            </p>
+        </md-list-item>
+        <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+            <p flex="50" class="module-zones__item-name">Program 2: temperatura tła</p>
+            <p flex="50" class="module-zones__item-value" ng-bind="moduleData.selectedZone.schedule.p1SetbackTemp/10 + '°C'"></p>
+        </md-list-item>
+        <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item" ng-repeat="(key, interval) in moduleData.selectedZone.schedule.p1Intervals">
+            <p flex="50" class="module-zones__item-name">Program 2: przedział {{key + 1}}</p>
+            <p flex="50" class="module-zones__item-value" ng-bind="'Początek: ' + (interval.start | minHour) + ' | koniec: ' + (interval.stop | minHour) + ' | temperatura: ' + interval.temp/10 + '°C'"></p>
+        </md-list-item>
+        <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+            <p flex="50" class="module-zones__item-name">Niesformatowany harmonogram</p>
+            <p flex="50" class="module-zones__item-value" ng-bind="moduleData.selectedZone.schedule.scheduleRaw"></p>
+        </md-list-item>
+
+        <div  flex layout="row" layout-align="space-around center" ng-if="moduleData.selectedZone.underfloor.id">
+
+            <md-divider></md-divider>
+
+            <md-subheader md-colors="{background: 'red-500'}"  class="module-zones__item  module-zones__item--subheader">Ogrzewanie podłogowe</md-subheader>
+
+            <md-list-item class="module-zones__item">
+                <p flex="50" class="module-zones__item-name">Id</p>
+                <p flex="50" class="module-zones__item-value" ng-bind="moduleData.selectedZone.underfloor.id"></p>
+            </md-list-item>
+            <md-list-item class="module-zones__item">
+                <p flex="50" class="module-zones__item-name">Id rodzica</p>
+                <p flex="50" class="module-zones__item-value" ng-bind="moduleData.selectedZone.underfloor.parentId"></p>
+            </md-list-item>
+            <md-list-item class="module-zones__item">
+                <p flex="50" class="module-zones__item-name">Tryb</p>
+                <p flex="50" class="module-zones__item-value" ng-bind="moduleData.selectedZone.underfloor.mode | underfloorMode"></p>
+            </md-list-item>
+            <md-list-item class="module-zones__item">
+                <p flex="50" class="module-zones__item-name">Aktualny stan</p>
+                <p flex="50" class="module-zones__item-value" ng-bind="moduleData.selectedZone.underfloor.currentState | underfloorCurrentMode"></p>
+            </md-list-item>
+            <md-list-item class="module-zones__item">
+                <p flex="50" class="module-zones__item-name">Temperatura</p>
+                <p flex="50" class="module-zones__item-value" ng-bind="moduleData.selectedZone.underfloor.temperature/10 + '°C'"></p>
+            </md-list-item>
+            <md-list-item class="module-zones__item">
+                <p flex="50" class="module-zones__item-name">Pompa podłogowa</p>
+                <p flex="50" class="module-zones__item-value" ng-bind="moduleData.selectedZone.underfloor.floorPump"></p>
+            </md-list-item>
+            <md-list-item class="module-zones__item">
+                <p flex="50" class="module-zones__item-name">Typ czujnika</p>
+                <p flex="50" class="module-zones__item-value" ng-bind="moduleData.selectedZone.underfloor.sensorType | sensorType"></p>
+            </md-list-item>
+            <md-list-item class="module-zones__item">
+                <p flex="50" class="module-zones__item-name">Poziom baterii</p>
+                <p flex="50" class="module-zones__item-value" ng-bind="moduleData.selectedZone.underfloor.batteryLevel + '%'"></p>
+            </md-list-item>
+            <md-list-item class="module-zones__item">
+                <p flex="50" class="module-zones__item-name">Poziom sygnału</p>
+                <p flex="50" class="module-zones__item-value" ng-bind="moduleData.selectedZone.underfloor.signalStrength + '%'"></p>
+            </md-list-item>
+            <md-list-item class="module-zones__item">
+                <p flex="50" class="module-zones__item-name">Błąd serwisowy</p>
+                <p flex="50" class="module-zones__item-value" ng-bind="moduleData.selectedZone.underfloor.events.serviceError ? 'Tak' : 'Nie'"></p>
+            </md-list-item>
+            <md-list-item class="module-zones__item">
+                <p flex="50" class="module-zones__item-name">Poprawna praca</p>
+                <p flex="50" class="module-zones__item-value" ng-bind="moduleData.selectedZone.underfloor.events.correctWork ? 'Tak' : 'Nie'"></p>
+            </md-list-item>
+            <md-list-item class="module-zones__item">
+                <p flex="50" class="module-zones__item-name">Brak komunikacji</p>
+                <p flex="50" class="module-zones__item-value" ng-bind="moduleData.selectedZone.underfloor.events.noCommunication ? 'Tak' : 'Nie'"></p>
+            </md-list-item>
+            <md-list-item class="module-zones__item">
+                <p flex="50" class="module-zones__item-name">Czujnik uszkodzony</p>
+                <p flex="50" class="module-zones__item-value" ng-bind="moduleData.selectedZone.underfloor.events.sensorDamaged ? 'Tak' : 'Nie'"></p>
+            </md-list-item>
+            <md-list-item class="module-zones__item">
+                <p flex="50" class="module-zones__item-name">Słaba bateria</p>
+                <p flex="50" class="module-zones__item-value" ng-bind="moduleData.selectedZone.underfloor.events.lowBattery ? 'Tak' : 'Nie'"></p>
+            </md-list-item>
+            <md-list-item class="module-zones__item">
+                <p flex="50" class="module-zones__item-name">Słaby sygnał</p>
+                <p flex="50" class="module-zones__item-value" ng-bind="moduleData.selectedZone.underfloor.events.lowSignal ? 'Tak' : 'Nie'"></p>
+            </md-list-item>
+            <md-list-item class="module-zones__item">
+                <p flex="50" class="module-zones__item-name">Temperatura zbyt wysoka</p>
+                <p flex="50" class="module-zones__item-value" ng-bind="moduleData.selectedZone.underfloor.events.tempTooHigh ? 'Tak' : 'Nie'"></p>
+            </md-list-item>
+            <md-list-item class="module-zones__item">
+                <p flex="50" class="module-zones__item-name">Temperatura zbyt niska</p>
+                <p flex="50" class="module-zones__item-value" ng-bind="moduleData.selectedZone.underfloor.events.tempTooLow ? 'Tak' : 'Nie'"></p>
+            </md-list-item>
+            <md-list-item class="module-zones__item">
+                <p flex="50" class="module-zones__item-name">Niesformatowane dane</p>
+                <p flex="50" class="module-zones__item-value" ng-bind="moduleData.selectedZone.underfloor.underfloorRaw"></p>
+            </md-list-item>
+
+        </div>
+
+
+
+        <div ng-if="moduleData.selectedZone.actuators.length > 0">
+            <div ng-repeat="actuator in moduleData.selectedZone.actuators">
+
+                <md-divider></md-divider>
+
+                <md-subheader md-colors="{background: 'red-500'}"  class="module-zones__item module-zones__item--subheader">Siłownik {{$index + 1}}</md-subheader>
+
+                <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+                    <p flex="50" class="module-zones__item-name">Id</p>
+                    <p flex="50" class="module-zones__item-value" ng-bind="actuator.id"></p>
+                </md-list-item>
+                <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+                    <p flex="50" class="module-zones__item-name">Id rodzica</p>
+                    <p flex="50" class="module-zones__item-value" ng-bind="actuator.parentId"></p>
+                </md-list-item>
+                <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+                    <p flex="50" class="module-zones__item-name">Indeks</p>
+                    <p flex="50" class="module-zones__item-value" ng-bind="actuator.index"></p>
+                </md-list-item>
+                <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+                    <p flex="50" class="module-zones__item-name">Status</p>
+                    <p flex="50" class="module-zones__item-value" ng-bind="actuator.state | actuatorState"></p>
+                </md-list-item>
+                <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+                    <p flex="50" class="module-zones__item-name">Poziom baterii</p>
+                    <p flex="50" class="module-zones__item-value" ng-bind="actuator.batteryLevel !== null ? (actuator.batteryLevel +'%') : '- -'"></p>
+                </md-list-item>
+                <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+                    <p flex="50" class="module-zones__item-name">Poziom sygnału</p>
+                    <p flex="50" class="module-zones__item-value" ng-bind="actuator.signalStrength !== null ? (actuator.signalStrength +'%') : '- -'"></p>
+                </md-list-item>
+                <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+                    <p flex="50" class="module-zones__item-name">Dane niesformatowane</p>
+                    <p flex="50" class="module-zones__item-value" ng-bind="actuator.actuatorRaw"></p>
+                </md-list-item>
+            </div>
+        </div>
+
+        <div ng-if="moduleData.selectedZone.windowsSensors.length > 0">
+
+            <md-divider></md-divider>
+
+            <div ng-repeat="sensor in moduleData.selectedZone.windowsSensors">
+
+                <md-subheader md-colors="{background: 'red-500'}"  class="module-zones__item module-zones__item--subheader">Czujnik okna {{$index + 1}}</md-subheader>
+
+                <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+                    <p flex="50" class="module-zones__item-name">Id</p>
+                    <p flex="50" class="module-zones__item-value" ng-bind="sensor.id"></p>
+                </md-list-item>
+                <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+                    <p flex="50" class="module-zones__item-name">Id rodzica</p>
+                    <p flex="50" class="module-zones__item-value" ng-bind="sensor.parentId"></p>
+                </md-list-item>
+                <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+                    <p flex="50" class="module-zones__item-name">Indeks</p>
+                    <p flex="50" class="module-zones__item-value" ng-bind="sensor.index"></p>
+                </md-list-item>
+                <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+                    <p flex="50" class="module-zones__item-name">Jakiekolwiek okno otwarte w strefie</p>
+                    <p flex="50" class="module-zones__item-value" ng-bind="moduleData.selectedZone.zone.flags.minOneWindowOpen ? 'Tak' : 'Nie'"></p>
+                </md-list-item>
+                <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+                    <p flex="50" class="module-zones__item-name">Aktualny stan</p>
+                    <p flex="50" class="module-zones__item-value" ng-bind="sensor.windowState == 'open' ? 'Okno otwarte' : 'Okno zamknięte'"></p>
+                </md-list-item>
+                <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+                    <p flex="50" class="module-zones__item-name">Status</p>
+                    <p flex="50" class="module-zones__item-value" ng-bind="sensor.state | actuatorState"></p>
+                </md-list-item>
+                <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+                    <p flex="50" class="module-zones__item-name">Poziom baterii</p>
+                    <p flex="50" class="module-zones__item-value" ng-bind="sensor.batteryLevel +'%'"></p>
+                </md-list-item>
+                <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+                    <p flex="50" class="module-zones__item-name">Poziom sygnału</p>
+                    <p flex="50" class="module-zones__item-value" ng-bind="sensor.signalStrength +'%'"></p>
+                </md-list-item>
+                <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+                    <p flex="50" class="module-zones__item-name">Niesformatowane dane</p>
+                    <p flex="50" class="module-zones__item-value" ng-bind="sensor.windowSensorRaw"></p>
+                </md-list-item>
+            </div>
+        </div>
+
+        <div ng-if="moduleData.selectedZone.additionalContacts.length > 0">
+
+            <md-divider></md-divider>
+
+            <div ng-repeat="contact in moduleData.selectedZone.additionalContacts">
+
+                <md-subheader md-colors="{background: 'red-500'}"  class="module-zones__item module-zones__item--subheader">Styk dodatkowy {{$index + 1}}</md-subheader>
+
+                <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+                    <p flex="50" class="module-zones__item-name">Id</p>
+                    <p flex="50" class="module-zones__item-value" ng-bind="contact.id"></p>
+                </md-list-item>
+                <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+                    <p flex="50" class="module-zones__item-name">Id rodzica</p>
+                    <p flex="50" class="module-zones__item-value" ng-bind="contact.parentId"></p>
+                </md-list-item>
+                <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+                    <p flex="50" class="module-zones__item-name">Indeks</p>
+                    <p flex="50" class="module-zones__item-value" ng-bind="contact.index"></p>
+                </md-list-item>
+                <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+                    <p flex="50" class="module-zones__item-name">Status</p>
+                    <p flex="50" class="module-zones__item-value" ng-bind="contact.state | actuatorState"></p>
+                </md-list-item>
+                <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+                    <p flex="50" class="module-zones__item-name">Poziom baterii</p>
+                    <p flex="50" class="module-zones__item-value" ng-bind="contact.batteryLevel +'%'"></p>
+                </md-list-item>
+                <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+                    <p flex="50" class="module-zones__item-name">Poziom sygnału</p>
+                    <p flex="50" class="module-zones__item-value" ng-bind="contact.signalStrength +'%'"></p>
+                </md-list-item>
+                <md-list-item flex layout="row" layout-align="space-around center" class="module-zones__item">
+                    <p flex="50" class="module-zones__item-name">Niesformatowane dane</p>
+                    <p flex="50" class="module-zones__item-value" ng-bind="contact.contactRaw"></p>
+                </md-list-item>
+            </div>
+        </div>
+
+    </md-content>
+
+    <md-dialog-actions layout="row">
+        <md-button class="md-raised md-warn" ng-click="cancel()">Zamknij</md-button>
+    </md-dialog-actions>
+
+</md-dialog>

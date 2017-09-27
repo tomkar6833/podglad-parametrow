@@ -1,0 +1,59 @@
+<md-dialog aria-label="Szczegóły alarmu" class="info">
+
+    <md-toolbar layout-align="center center">Szczegóły alarmu</md-toolbar>
+    <md-content class="alarm__list">
+        <md-list-item class="alarm__item" flex layout="row" layout-align="space-around center">
+            <p flex="50" class="alarm__item-name">Nazwa</p>
+            <p flex="50" class="alarm__item-value" ng-bind="tools.subtitle(moduleData.selectedAlarm.txtId)"></p>
+        </md-list-item>
+        <md-list-item class="alarm__item" flex layout="row" layout-align="space-around center">
+            <p flex="50" class="alarm__item-name">Id</p>
+            <p flex="50" class="alarm__item-value" ng-bind="moduleData.selectedAlarm.id"></p>
+        </md-list-item>
+        <md-list-item class="alarm__item" flex layout="row" layout-align="space-around center">
+            <p flex="50" class="alarm__item-name">Id rodzica</p>
+            <p flex="50" class="alarm__item-value" ng-bind="moduleData.selectedAlarm.parentId"></p>
+        </md-list-item>
+        <md-list-item class="alarm__item" flex layout="row" layout-align="space-around center">
+            <p flex="50" class="alarm__item-name">Typ</p>
+            <p flex="50" class="alarm__item-value" ng-bind="moduleData.selectedAlarm.type"></p>
+        </md-list-item>
+        <md-list-item class="alarm__item" flex layout="row" layout-align="space-around center">
+            <p flex="50" class="alarm__item-name">Start alarmu</p>
+            <p flex="50" class="alarm__item-value" ng-bind="moduleData.selectedAlarm.startAlarm"></p>
+        </md-list-item>
+        <md-list-item class="alarm__item" flex layout="row" layout-align="space-around center">
+            <p flex="50" class="alarm__item-name">Koniec alarmu</p>
+            <p flex="50" class="alarm__item-value" ng-bind="moduleData.selectedAlarm.clearAlarm"></p>
+        </md-list-item>
+        <md-list-item class="alarm__item" flex layout="row" layout-align="space-around center">
+            <p flex="50" class="alarm__item-name">Id napisu</p>
+            <p flex="50" class="alarm__item-value" ng-bind="moduleData.selectedAlarm.txtId"></p>
+        </md-list-item>
+        <md-list-item class="alarm__item" flex layout="row" layout-align="space-around center">
+            <p flex="50" class="alarm__item-name">Id ikony</p>
+            <p flex="50" class="alarm__item-value" ng-bind="moduleData.selectedAlarm.iconId"></p>
+        </md-list-item>
+        <md-list-item class="alarm__item" flex layout="row" layout-align="space-around center">
+            <p flex="50" class="alarm__item-name">Id podpiętego menu</p>
+            <p flex="50" class="alarm__item-value" ng-bind="moduleData.selectedAlarm.menuId"></p>
+        </md-list-item>
+        <md-list-item class="alarm__item" flex layout="row" layout-align="space-around center">
+            <p flex="50" class="alarm__item-name">Zdalne kasowanie alarmu</p>
+            <p flex="50" class="alarm__item-value" ng-bind="moduleData.selectedAlarm.remoteCancel == 0 ? 'Nie' : 'Tak'"></p>
+        </md-list-item>
+        <md-list-item class="alarm__item" flex layout="row" layout-align="space-around center">
+            <p flex="50" class="alarm__item-name">Wartość</p>
+            <p flex="50" class="alarm__item-value" ng-bind="moduleData.selectedAlarm.value"></p>
+        </md-list-item>
+        <md-list-item class="alarm__item" flex layout="row" layout-align="space-around center">
+            <p flex="50" class="alarm__item-name">Jednostka</p>
+            <p flex="50" class="alarm__item-value" ng-bind="moduleData.selectedAlarm.unit"></p>
+        </md-list-item>
+    </md-content>
+
+    <md-dialog-actions layout="row">
+        <md-button class="md-raised md-warn" ng-click="cancel()">Zamknij</md-button>
+    </md-dialog-actions>
+
+</md-dialog>

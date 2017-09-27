@@ -1,0 +1,57 @@
+.module-menu {
+  margin: 0;
+  position: absolute;
+  top: 70px;
+  left: 288px;
+  right: 0;
+  bottom: 0;
+  border-left: 1px solid #E53935; }
+
+.module-menu__list-item {
+  height: 30px;
+  outline: none; }
+
+.module-menu__list-item:hover {
+  background: rgba(0, 0, 0, 0.1); }
+
+.module-menu__value {
+  text-align: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden; }
+
+.module-menu__tree-item {
+  padding: 2px 0;
+  height: 30px;
+  outline: none; }
+
+.module-menu__tree-item:hover {
+  background: rgba(0, 0, 0, 0.1); }
+
+.module-menu__tree-item--parent {
+  padding-top: 20px;
+  margin-top: 20px;
+  border-top: 1px solid #000; }
+
+.module-menu__tree-item:first-child {
+  border: none;
+  padding: 0; }
+
+md-pagination-wrapper {
+  min-width: 700px; }
+
+md-tab-item.md-tab.ng-scope.ng-isolate-scope.md-ink-ripple {
+  width: 170px; }
+
+md-tabs:not(.md-no-tab-content):not(.md-dynamic-height).module-menu__tabs {
+  min-height: 100%; }
+
+md-virtual-repeat-container.module-menu__tree, md-virtual-repeat-container.module-menu__list {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0; }
+
+md-virtual-repeat-container.module-menu__list {
+  top: 140px; }

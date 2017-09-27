@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html ng-app="Modules" ng-controller="MainController">
+
+  <head>
+
+    <title>Moduły</title>
+
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+
+      <% if ENV['RACK_ENV'] == 'production' %>
+
+          <link rel="stylesheet" property="stylesheet" href="css/application.min.css">
+
+      <% else %>
+
+    <link rel="stylesheet" property="stylesheet" href="css/style.css">
+
+      <% end %>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web:400,600,700" rel="stylesheet">
+    <link rel="shortcut icon" href="img/favicon.ico">
+
+    </head>
+
+    <body id="popupContainer">
+
+    <%= yield %>
+
+    </body>
+
+    <script src="scripts/angular.min.js"></script>
+
+    <script src="scripts/angular-ui-router.min.js"></script>
+    <script src="scripts/angular-sanitize.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+
+  <% if ENV['RACK_ENV'] == 'production' %>
+
+    <script src="scripts/application.min.js"></script>
+
+    <%else %>
+
+
+    <script src="scripts/libs/ng-map.min.js"></script>
+    <script src="scripts/libs/markerclusterer.js"></script>
+
+
+    <script src="scripts/app.js"></script>
+
+    <script src="scripts/controllers/main.controller.js"></script>
+    <script src="scripts/controllers/map.controller.js"></script>
+    <script src="scripts/controllers/dialog.controller.js"></script>
+    <script src="scripts/controllers/submenu.controller.js"></script>
+    <script src="scripts/controllers/menu.controller.js"></script>
+    <script src="scripts/controllers/module_info.controller.js"></script>
+    <script src="scripts/controllers/module_menu.controller.js"></script>
+    <script src="scripts/controllers/module_tiles.controller.js"></script>
+    <script src="scripts/controllers/module_zones.controller.js"></script>
+    <script src="scripts/controllers/module_alarm.controller.js"></script>
+    <script src="scripts/controllers/module_alarm_history.controller.js"></script>
+    <script src="scripts/controllers/modules_list.controller.js"></script>
+
+    <script src="scripts/services/map.service.js"></script>
+    <script src="scripts/services/login.service.js"></script>
+    <script src="scripts/services/modules.service.js"></script>
+    <script src="scripts/services/module_data.service.js"></script>
+    <script src="scripts/services/module_app.service.js"></script>
+    <script src="scripts/services/tools.service.js"></script>
+
+    <script src="scripts/directives/app.directive.js"></script>
+
+    <script src="scripts/filters/app.filter.js"></script>
+
+    <% end %>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAX7mMSXY4h-hRVq-w-dTICvL4ivthR7UI"></script>
+
+</html>
